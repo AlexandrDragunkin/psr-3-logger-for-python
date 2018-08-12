@@ -2,7 +2,7 @@ import os
 import json
 import datetime
 
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 
 
 class LoggerInterface:
@@ -115,7 +115,7 @@ class SimpleLogger(LoggerInterface):
         if not self.fp.closed:
             self.fp.close()
 
-        for logger_channel_proxy in self._proxy_registry:
+        for logger_channel_proxy in list(self._proxy_registry):
             del self._proxy_registry[logger_channel_proxy]
 
     # todo decide to do not use because too many overloads in child class
